@@ -4,6 +4,9 @@ const openaiAPI = require('./openai');
 
 const { TELEGRAM_TOKEN } = require('./config');
 
+process.env.NTBA_FIX_319 = 1;
+process.env.NTBA_FIX_350 = 1;
+
 const bot = new TelegramBot(TELEGRAM_TOKEN, {
   polling: {
     interval: 600,
