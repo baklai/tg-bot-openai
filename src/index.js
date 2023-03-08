@@ -19,8 +19,9 @@ bot
   });
 
 bot.getMe().then((res) => {
-  const { username } = res;
-  BOTNAME = `@${username}`;
+  console.log(res);
+  const { first_name } = res;
+  BOTNAME = `@${first_name}`;
 });
 
 bot.onText(/\/help/, (msg) => {
