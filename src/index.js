@@ -45,10 +45,10 @@ bot.on('message', async (msg) => {
   const { text, entities } = msg;
 
   try {
-    bot.sendMessage(id, 'Трохи зачекай, зараз все буде...', { parse_mode: 'HTML' });
     const data = await openaiAPI(text);
     const [message] = data.choices;
     if (entities === undefined) {
+      bot.sendMessage(id, 'Трохи зачекай, зараз все буде...', { parse_mode: 'HTML' });
       bot.sendMessage(id, message.text, { parse_mode: 'HTML' });
     }
   } catch (err) {
