@@ -43,7 +43,9 @@ bot.onText(/\/about/, (msg) => {
 bot.on('message', async (msg) => {
   const { id } = msg.chat;
   const { text, entities } = msg;
+
   try {
+    bot.sendMessage(id, 'Трохи зачекай, зараз все буде...', { parse_mode: 'HTML' });
     const data = await openaiAPI(text);
     const [message] = data.choices;
     if (entities === undefined) {
