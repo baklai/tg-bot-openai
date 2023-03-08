@@ -19,8 +19,8 @@ bot
   });
 
 bot.getMe().then((res) => {
-  const { first_name } = res;
-  BOTNAME = `@${first_name}`;
+  const { username } = res;
+  BOTNAME = `@${username}`;
 });
 
 bot.onText(/\/help/, (msg) => {
@@ -49,16 +49,18 @@ bot.onText(/^(?!\/).*$/, async (msg) => {
       const [message] = data.choices;
       bot.sendMessage(id, message.text, { parse_mode: 'HTML' });
     } catch (err) {
+      console.log('private', err);
       bot.sendMessage(id, 'Упс! Помилка, щось пішло не так!', { parse_mode: 'HTML' });
     }
   } else if (type === 'group' || type === 'supergroup') {
     if (text.includes(BOTNAME)) {
       try {
-        const newText = text.replaceAll(BOTNAME).trim();
+        const newText = text.replaceAll(BOTNAME, '').trim();
         const data = await openaiAPI(newText);
         const [message] = data.choices;
         bot.sendMessage(id, message.text, { parse_mode: 'HTML' });
       } catch (err) {
+        console.log('group', err);
         bot.sendMessage(id, 'Упс! Помилка, щось пішло не так!', { parse_mode: 'HTML' });
       }
     }
