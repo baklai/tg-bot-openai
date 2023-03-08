@@ -29,7 +29,7 @@ bot.onText(/\/about/, (msg) => {
   bot.sendMessage(id, message, { parse_mode: 'HTML' });
 });
 
-bot.onText(/(\/\w+)+\//g, async (msg) => {
+bot.onText(/^(?!\/).*$/, async (msg) => {
   const { id } = msg.chat;
   const { text } = msg;
   try {
