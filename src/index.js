@@ -56,7 +56,8 @@ bot.onText(/^(?!\/).*$/, async (msg) => {
     if (text.includes(BOTNAME)) {
       try {
         console.log('text', text);
-        const newText = text?.replaceAll(BOTNAME, '')?.trim() || '';
+        console.log('botname', BOTNAME);
+        const newText = text?.replace(BOTNAME, '')?.trim();
         const data = await openaiAPI(newText);
         const [message] = data.choices;
         bot.sendMessage(id, message.text, { parse_mode: 'HTML' });
