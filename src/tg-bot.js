@@ -4,7 +4,11 @@ const { APP_URL, TELEGRAM_TOKEN } = require('./config');
 
 const TG_OPTIONS =
   process.env.NODE_ENV === 'production'
-    ? {}
+    ? {
+        webHook: {
+          port: process.env.PORT
+        }
+      }
     : {
         filepath: false,
         polling: {
