@@ -55,6 +55,7 @@ bot.onText(/^(?!\/).*$/, async (msg) => {
   } else if (type === 'group' || type === 'supergroup') {
     if (text.includes(BOTNAME)) {
       try {
+        console.log('text', text);
         const newText = text?.replaceAll(BOTNAME, '')?.trim() || '';
         const data = await openaiAPI(newText);
         const [message] = data.choices;
