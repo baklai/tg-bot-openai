@@ -43,17 +43,14 @@ bot.onText(/\/about/, (msg) => {
   bot.sendMessage(id, message, { parse_mode: 'HTML' });
 });
 
-bot.on('message', async (msg) => {
+bot.onText(/(\/\w+)+\//g, async (msg) => {
   const { id } = msg.chat;
-  const { text, entities } = msg;
-
+  const { text } = msg;
   try {
-    if (entities === undefined) {
-      bot.sendMessage(id, 'Трохи зачекай, зараз все буде...', { parse_mode: 'HTML' });
-      const data = await openaiAPI(text);
-      const [message] = data.choices;
-      bot.sendMessage(id, message.text, { parse_mode: 'HTML' });
-    }
+    bot.sendMessage(id, 'Трохи зачекай, зараз все буде...', { parse_mode: 'HTML' });
+    const data = await openaiAPI(text);
+    const [message] = data.choices;
+    bot.sendMessage(id, message.text, { parse_mode: 'HTML' });
   } catch (err) {
     bot.sendMessage(id, 'Упс! Помилка, щось пішло не так!', { parse_mode: 'HTML' });
   }
