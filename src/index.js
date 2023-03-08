@@ -1,19 +1,5 @@
-const TelegramBot = require('node-telegram-bot-api');
-
+const bot = require('./tg-bot');
 const openaiAPI = require('./openai');
-
-const { TELEGRAM_TOKEN } = require('./config');
-
-process.env.NTBA_FIX_319 = 1;
-process.env.NTBA_FIX_350 = 1;
-
-const bot = new TelegramBot(TELEGRAM_TOKEN, {
-  polling: {
-    interval: 600,
-    autoStart: true,
-    params: { timeout: 10 }
-  }
-});
 
 const commands = [
   { command: 'help', description: 'довідка по роботі з ботом' },

@@ -4,7 +4,7 @@
   "description": "HDGuruBot - Телеграм бот технічної підтримки, розроблений на базі OpenAI",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js",
+    "dev": "set NODE_ENV=development&& nodemon index.js",
     "start": "node index.js"
   },
   "author": "Dmitrii Baklai",

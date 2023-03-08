@@ -17,6 +17,7 @@ npm install
 
 | Key                 | Comment                                                                       |
 | ------------------- | ----------------------------------------------------------------------------- |
+| `APP_URL`           | Application URL in production                                                 |
 | `TELEGRAM_TOKEN`    | Telegram Bot Token                                                            |
 | `OPENAI_API_KEY`    | Openai API Key                                                                |
 | `OPENAI_API_URL`    | Openai API Url (Optional key, default: https://api.openai.com/v1/completions) |
