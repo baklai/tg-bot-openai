@@ -45,9 +45,9 @@ bot.on('message', async (msg) => {
   const { text, entities } = msg;
 
   try {
-    const data = await openaiAPI(text);
-    const [message] = data.choices;
     if (entities === undefined) {
+      const data = await openaiAPI(text);
+      const [message] = data.choices;
       bot.sendMessage(id, 'Трохи зачекай, зараз все буде...', { parse_mode: 'HTML' });
       bot.sendMessage(id, message.text, { parse_mode: 'HTML' });
     }
