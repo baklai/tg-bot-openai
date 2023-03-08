@@ -19,7 +19,6 @@ bot
   });
 
 bot.getMe().then((res) => {
-  console.log(res);
   const { first_name } = res;
   BOTNAME = `@${first_name}`;
 });
